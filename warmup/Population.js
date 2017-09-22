@@ -50,7 +50,7 @@ function Population(p, m, num) {
     // a lower fitness = fewer entries to mating pool = less likely to be picked as a parent
     for (var i = 0; i < this.population.length; i++) {
       
-      var fitness = map(this.population[i].fitness,0,maxFitness,0,1);
+      var fitness = map(this.population[i].fitness, 0, maxFitness, 0, 1);
       var n = floor(fitness * 100);  // Arbitrary multiplier, we can also use monte carlo method
       for (var j = 0; j < n; j++) {              // and pick two random numbers
         this.matingPool.push(this.population[i]);
@@ -88,8 +88,8 @@ function Population(p, m, num) {
         worldrecord = this.population[i].fitness;
       }
     }
-
-    this.best = this.population[index].getPhrase();
+ 
+    this.best = this.population[index].getStats();
 	//this.bestDNAsPerGen.push(this.best + ";");
     if (worldrecord === this.perfectScore) {
       this.finished = true;
@@ -115,19 +115,19 @@ function Population(p, m, num) {
     return total / (this.population.length);
   }
 
-  this.allPhrases = function() {
+  this.allStats = function() {
     var everything = "";
     
-    var displayLimit = min(this.population.length,50);
+    var displayLimit = min(this.population.length, 50);
     
     
     for (var i = 0; i < displayLimit; i++) {
-      everything += this.population[i].getPhrase() + "<br>";
+      everything += this.population[i].getStats() + "<br>";
     }
     return everything;
   }
 }
-
+/*
 function download(data, filename, type) {
     var a = document.createElement("a"),
         file = new Blob([data], {type: type});
@@ -144,4 +144,4 @@ function download(data, filename, type) {
             window.URL.revokeObjectURL(url);  
         }, 0); 
     }
-}
+}*/

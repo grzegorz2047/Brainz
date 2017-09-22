@@ -15,29 +15,25 @@
 // Constructor (makes a random DNA)
 function DNA(num) {
   // The genetic sequence
+  this.food = 100;
+  this.populationCount = 1;
+  this.farms = 0;
+  this.totalTime = 0;
   this.genes = [];
-  this.fitness = 0;
-	for (var i = 0; i < num; i++) {
-		this.genes[i] = [];  
-		//Napisz jakie kodowanie ma być
-	}
+  this.fitness = 0; 
+  
 
   // Fitness function (returns floating point % of "correct" characters)
-  this.calcFitness = function(target) {
-     var score = 0;
-     for (var i = 0; i < this.genes.length; i++) {
-        if (this.genes[i] ==  ) {
-          score++;
-        }
-     }
-     this.fitness = score / target.length;
-     this.fitness = pow(this.fitness, 5);
+  this.calcFitness = function() {
+	this.totalTime++;
+	this.fitness = this.populationCount/this.totalTime;
+	this.fitness = pow(this.fitness, 5);
   }
 
   // Crossover
   this.crossover = function(partner) {
     // A new child
-    var child = new DNA(this.genes.length);
+    var child = new DNA(num);
     
     var midpoint = floor(random(this.genes.length)); // Pick a midpoint
     
@@ -53,8 +49,13 @@ function DNA(num) {
   this.mutate = function(mutationRate) {
     for (var i = 0; i < this.genes.length; i++) {
       if (random(1) < mutationRate) {
-        this.genes[i] =  //
+        this.genes[i] =  random(0,4)
       }
     }
+  }
+  
+  this.getStats = function() {
+	 return "population: " + populationCount + ", food: " + food;
+	  
   }
 }
