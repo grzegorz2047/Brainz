@@ -9,9 +9,10 @@ var totalPopulation = 150;      // Total Population
 var population;             // Array to hold the current population
 var matingPool;    // ArrayList which we will use for our "mating pool"
 var populationTarget;                // Target phrase
-
+var display;
 function setup() {
-	createCanvas(640, 480);
+	display = createCanvas(640, 480);
+	
 	populationTarget = 10000;
 	generatePopulation(populationTarget);
 }
@@ -29,7 +30,13 @@ function draw() {
 		lastSecond = s;
 		doAction();
 	}
-	text("Current second: \n" + total, 5, 50);
+
+	var everything = "";
+	for (var i = 0; i < population.length; i++) {
+		everything += population[i].getStats() + "\n";
+	}
+	text(everything, 5, 50);
+	//text("Current second: \n" + total, 5, 50);
 }
 
 function generatePopulation(target) {
@@ -65,12 +72,5 @@ function doAction() {
     population[i] = child;
   }
   
-  var everything = "";
-  for (var i = 0; i < population.length; i++) {
-    if (i % 4 == 0) everything += "<br>";
-    everything += population[i].getStats() + "    ";
-  }
-  textFont("Courier");
-  display.html(everything);
 }
 

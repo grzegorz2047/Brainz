@@ -55,7 +55,7 @@ function DNA(num) {
   }
   
   this.getStats = function() {
-	 return "population: " + populationCount + ", food: " + food;
+	 return "population: " + this.populationCount + ", food: " + this.food;
 	  
   }
 }
