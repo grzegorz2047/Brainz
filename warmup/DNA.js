@@ -55,7 +55,10 @@ function DNA(num) {
   }
   
   this.getStats = function() {
-	 return "population: " + this.populationCount + ", food: " + this.food;
-	  
+	 return "population: " + this.populationCount + ", food: " + this.food;  
+  }
+  
+  this.process = function() {
+	this.genes.join(random(0,4));
   }
 }

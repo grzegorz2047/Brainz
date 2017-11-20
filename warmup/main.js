@@ -51,8 +51,9 @@ function generatePopulation(target) {
 function doAction() {
   for (var i = 0; i < population.length; i++) {
     population[i].calcFitness();
+    population[i].process();
   }	
-  print("lolol");
+  print("tik tak: " + this.total);
   var matingPool = [];  // ArrayList which we will use for our "mating pool"
 
   for (var i = 0; i < population.length; i++) {
